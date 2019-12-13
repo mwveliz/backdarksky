@@ -2,7 +2,7 @@
 
 > POC: Nodejs - Express REST API with redis 
 
-This POC has two endpoints that are called from the frontend react project
+This POC has one endpoint that is called from the frontend react project
 located at https://github.com/mwveliz/frontdarksky
 
 ## Usage
