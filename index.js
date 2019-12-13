@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const credentials = require('./apiCredentials.json'); //credentials for Darksy API
 const unirest = require('unirest');
 const retry = require('retry');
+const cors = require('cors');
 
 // configuration
 const operation = retry.operation({
@@ -30,6 +31,18 @@ const app = express();
 //Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use('*', function(req, res, next) {
+//replace localhost:8080 to the ip address:port of your server
+res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+res.header("Access-Control-Allow-Headers", "X-Requested-With");
+res.header('Access-Control-Allow-Headers', 'Content-Type');
+res.header('Access-Control-Allow-Credentials', true);
+next(); 
+});
+
+//enable pre-flight
+app.options('*', cors());
 
 //Middleware Function to Check Cache
 checkCache = (req, res, next) => {
