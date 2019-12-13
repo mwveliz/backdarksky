@@ -1,0 +1,28 @@
+{
+  "name": "backdarksky",
+  "version": "0.0.1",
+  "description": "Darksky NodeJS and Redis Backend for Weather Data",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwveliz/backdarksky.git"
+  },
+  "author": "Miguel Delgado Veliz",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mwveliz/backdarksky.git/issues"
+  },
+  "homepage": "https://github.com/mwveliz/backdarksky.git#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^2.8.0",
+    "retry": "^0.12.0",
+    "unirest": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
