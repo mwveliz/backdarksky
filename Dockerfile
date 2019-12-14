@@ -23,6 +23,8 @@ EXPOSE 5000
 
 EXPOSE 6379
 
-CMD concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; node 
-/app/src/index.js"
+COPY start.sh /start.sh
 
+RUN [“chmod”, “+x”, "/start.sh”]
+
+ENTRYPOINT "./start.sh"

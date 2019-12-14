@@ -129,4 +129,4 @@ app.get("/darksky/:lat/:lon", checkCache,  (req, res) => {
   }
 });
 
-app.listen(port, () => console.log(`Server running on Port ${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`Server running on Port ${port}`));
