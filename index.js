@@ -43,6 +43,7 @@ const host = req.get('host');
       res.setHeader('Access-Control-Allow-Origin', host);
     }
   }); 
+res.setHeader('Access-Control-Allow-Origin', '*');
 res.header("Access-Control-Allow-Headers", "X-Requested-With");
 res.header('Access-Control-Allow-Headers', 'Content-Type');
 res.header('Access-Control-Allow-Credentials', true);
