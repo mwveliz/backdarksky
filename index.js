@@ -33,7 +33,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('*', function(req, res, next) {
-res.header("Access-Control-Allow-Origin", "http://localhost:3006");
+const allowedOrigins =  ['http://127.0.0.1:3006', 'http://localhost:3006', 
+'http://127.0.0.1:80', 'http://localhost:80', 
+'ec2-3-210-181-109.compute-1.amazonaws.com:3006', '3.210.181.109:3006', 
+'3.210.181.109:80'];
+const host = req.get('host');
+ allowedOrigins.forEach((val, key)=>{
+    if (host.indexOf(val) > -1){
+      res.setHeader('Access-Control-Allow-Origin', host);
+    }
+  }); 
 res.header("Access-Control-Allow-Headers", "X-Requested-With");
 res.header('Access-Control-Allow-Headers', 'Content-Type');
 res.header('Access-Control-Allow-Credentials', true);
