@@ -1,17 +1,28 @@
-FROM node:10-alpine
+FROM node:carbon
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+RUN wget http://download.redis.io/redis-stable.tar.gz && \
+    tar xvzf redis-stable.tar.gz && \
+    cd redis-stable && \
+    make && \
+    mv src/redis-server /usr/bin/ && \
+    cd .. && \
+    rm -r redis-stable && \
+    npm install -g concurrently   
 
-WORKDIR /home/node/app
+EXPOSE 6379
 
-COPY package*.json ./
+WORKDIR /app
 
-USER node
+COPY package.json /app
 
 RUN npm install
 
-COPY --chown=node:node . .
+COPY . /app
 
 EXPOSE 5000
 
-CMD [ "node", "index.js" ]
+EXPOSE 6379
+
+CMD concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; node 
+/app/src/index.js"
+
