@@ -72,7 +72,6 @@ checkCache = (req, res, next) => {
 
 
 
-
 //lamado del api
 callApi = (req, res) =>{
     const { lat, lon } = req.params;
@@ -81,7 +80,7 @@ callApi = (req, res) =>{
     calls = calls + 1
     request.end(response => {
         //si hay error o ocurrio 10% dde probabilidad
-        if (response.error || Math.random()<0.1) res.status(500).end(); 
+        if (response.error || Math.random()<0.1) return response.error;
         
         const temperature = response.body.currently.temperature; 
     //add data to Redis
