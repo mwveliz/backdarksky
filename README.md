@@ -30,6 +30,15 @@ With [npm](https://npmjs.org/) installed, run
 $ npm i
 ```
 
+## Docker Deploy
+
+```
+$ docker build -t backdarksky .
+
+$ docker run -d -v deploy -p 0.0.0.0:5000:5000 -p 0.0.0.0:6379:6379 --name backdarksky backdarksky
+
+```
+
 ## Acknowledgments
 
 mwveliz@gmail.com
@@ -37,6 +46,7 @@ mwveliz@gmail.com
 ## See Also
 
 Frontend repo: https://github.com/mwveliz/frontdarksky
+docker-compose for deployment: https://github.com/mwveliz/traefikdarksky
 ## License
 
 GPL V-3.0
