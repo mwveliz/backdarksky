@@ -14,13 +14,12 @@ to start the project
 ```
 
 ## API
-The two of them are  GET
+Call
 ```
-http://localhost:5000/darksky/72.31/-53.06
-http://localhost:5000/darksky/-66.56/10.3
+http://{{HOST}}/api/darksky/72.31/-53.06
+http://{{HOST}}/api/darksky/-66.56/10.3
 
 ```
-
 
 ## Install
 
